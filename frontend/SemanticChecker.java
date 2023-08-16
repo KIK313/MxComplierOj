@@ -54,10 +54,10 @@ public class SemanticChecker implements ASTVisitor {
             }
             if (currentScope.containsVariable(nd.name, false)) throw new semanticError("Redefinition of variable", nd.pos);
             if (gScope.getFunc(nd.name) != null) throw new semanticError("Bad variable name same as function", nd.pos);
-            if (currentClass != null) {
-                if (gScope.classes.get(currentClass).methods.containsKey(nd.name))
-                    throw new semanticError("Bad variable name same as method", nd.pos);
-            }
+//            if (currentClass != null) {
+//                if (gScope.classes.get(currentClass).methods.containsKey(nd.name))
+//                    throw new semanticError("Bad variable name same as method", nd.pos);
+//            }
             currentScope.defVariable(nd.name, it.tp, nd.pos);
         }
     }
@@ -252,7 +252,7 @@ public class SemanticChecker implements ASTVisitor {
         if (it.nd instanceof new_exprNode) throw new semanticError("wrong new expression array", it.pos);
         it.id.accept(this);
         if (!it.id.nodeType.equal(new Type("int"))) throw new semanticError("array id is not int", it.pos);
-        it.nodeType = new Type(it.nd.nodeType);
+        it.nodeType = new Type(it.nd.nodeType); it.nodeType.isAssign = true;
         it.nodeType.dim--;
     }
     public void visit(func_exprNode it) {
