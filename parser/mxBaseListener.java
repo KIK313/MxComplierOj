@@ -1,5 +1,4 @@
-// Generated from C:/Users/иш╪ндо/IdeaProjects/Mx_Compiler\mx.g4 by ANTLR 4.12.0
-package parser;
+package parser;// Generated from mx.g4 by ANTLR 4.13.0
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
